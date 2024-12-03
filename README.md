@@ -45,7 +45,7 @@ This project demonstrates how OpenCV and TensorFlow can be combined to solve rea
 └── README.md                         # This file
 
 
-Usage
+## Usage
 1. Training the Neural Network
 The main.py script trains a neural network to classify vehicle images. The neural network learns to differentiate between images of vehicles (Camry, Minivan, SUV) and random binary blobs (representing noise).
 
@@ -54,7 +54,7 @@ python main.py
 
 The model will train for 30 epochs, progressively improving its accuracy in distinguishing between vehicles and random blobs. The trained model is then used for video vehicle detection.
 
-2. Vehicle Detection in Video
+## 2. Vehicle Detection in Video
 The threshold.py script applies background subtraction to detect moving objects (likely vehicles) in the video feed. The neural network trained in main.py is then used to classify detected moving objects (cars) in real-time. The system processes each frame of the video, applies the necessary pre-processing, and highlights detected vehicles with green bounding boxes.
 
 To run vehicle detection on a video:
@@ -62,22 +62,23 @@ python threshold.py
 
 The system will process the video frame by frame, apply background subtraction, and detect vehicles in real-time. The output video with detected vehicles will be saved as output_video.mp4.
 
-3. Jupyter Notebook Workflow
+## 3. Jupyter Notebook Workflow
 You can also use the main.ipynb notebook for training and inference, offering an interactive interface for visualizing model performance and processing videos.
 
 Open main.ipynb using Jupyter Notebook.
 Train the model and test vehicle detection directly from the notebook.
-4. Custom Video Processing
+
+## 4. Custom Video Processing
 If you want to process a different video, modify the video variable in main.py or threshold.py to point to the correct file.
 video = 'path/to/your/video.mp4'
 
 
-Implementation & Results
+### Implementation & Results
 This project successfully developed a pipeline for vehicle classification using machine learning techniques. The two-phase approach demonstrated the feasibility of combining ANN and SVM for improved accuracy. The model trained with images of different vehicle types and used background subtraction to detect vehicles in video footage. The detection results were promising, with vehicles correctly identified in most frames of the video feed.
 
 In our tests, the model showed a high degree of accuracy in detecting and classifying cars against a variety of backgrounds. However, future work could focus on deploying the solution for real-time traffic management and improving the model’s generalization to handle a wider variety of vehicles and conditions.
 
-Conclusion
+## Conclusion
 This project showcases the application of computer vision and machine learning to vehicle detection and classification. By leveraging OpenCV for image processing and TensorFlow Keras for neural network training, the system demonstrates real-time vehicle detection with good accuracy. It has significant potential for use in intelligent traffic systems and automated vehicle monitoring.
 
 Contributors
