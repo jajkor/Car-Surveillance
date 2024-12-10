@@ -1,0 +1,138 @@
+Flowchart: Car Surveillance System
+
+1. Start
+System initializes and loads the required libraries:
+OpenCV
+TensorFlow (Keras)
+NumPy
+Other dependencies (Matplotlib, pandas, etc.)
+2. Load Video Feed
+Load video file ('vid1.mp4' or custom file) from the data/videos/ folder.
+3. Image Pre-processing Phase
+3.1 Read Video Frames
+
+Capture video frames one by one from the video feed using OpenCV.
+3.2 Apply Background Subtraction
+
+Use background subtraction technique to detect moving objects (potential vehicles).
+Input: Current video frame
+Output: Binary mask of moving objects
+3.3 Filter Noise (Remove Small Blobs)
+
+Use OpenCV morphological operations (e.g., dilation, erosion) to remove small irrelevant blobs.
+Input: Binary mask
+Output: Cleaned-up moving object mask
+3.4 Contour Detection
+
+Identify contours around the remaining blobs to define potential vehicle regions.
+Input: Cleaned-up binary mask
+Output: List of bounding boxes around detected objects
+4. Vehicle Classification Phase
+4.1 Load Pre-trained Neural Network
+
+Load the trained model (saved after training in main.py) for vehicle classification.
+Input: Pre-trained model weights
+Output: Loaded neural network ready for inference
+4.2 Pre-process Detected Object for Classification
+
+For each detected object (bounding box), crop the region of interest (ROI) and resize it for neural network input (e.g., 64x64 or 128x128 pixels).
+Input: Detected object (ROI)
+Output: Pre-processed image ready for classification
+4.3 Classify Vehicle Type
+
+Use the neural network to classify the object (vehicle) into predefined categories like Camry, Minivan, SUV, or noise.
+Input: Pre-processed image
+Output: Predicted vehicle type (e.g., Camry, Minivan, SUV, or noise)
+4.4 Draw Bounding Box
+
+Draw a green bounding box around detected vehicles and annotate the label (vehicle type) on the frame.
+Input: Vehicle type and bounding box
+Output: Frame with vehicle bounding boxes and labels
+5. Display and Save Output Video
+5.1 Show Output Frame
+
+Display the frame with bounding boxes in a window (real-time feedback during video processing).
+5.2 Save Processed Video
+
+Save the processed video with highlighted vehicles to an output file (output_video.mp4).
+Input: Processed video frames
+Output: Saved video with detected vehicles
+6. End
+Complete the processing after all video frames have been analyzed and classified.
+Close the video capture and release resources.
+
+-Flowchart Diagram
+
++-------------------------+
+|      Start               |
++-------------------------+
+            |
+            v
++-------------------------+
+| Load Video Feed         |
+| (from data/videos/)     |
++-------------------------+
+            |
+            v
++-------------------------+
+| Read Video Frames       |
++-------------------------+
+            |
+            v
++-------------------------+
+| Apply Background        |
+| Subtraction             |
++-------------------------+
+            |
+            v
++-------------------------+
+| Filter Noise            |
+| (Remove Small Blobs)    |
++-------------------------+
+            |
+            v
++-------------------------+
+| Detect Contours         |
+| (Find potential cars)   |
++-------------------------+
+            |
+            v
++-------------------------+
+| Load Pre-trained        |
+| Neural Network          |
++-------------------------+
+            |
+            v
++-------------------------+
+| Pre-process Detected    |
+| Object for Classification|
++-------------------------+
+            |
+            v
++-------------------------+
+| Classify Vehicle Type   |
+| (Camry, Minivan, SUV,   |
+| or Noise)               |
++-------------------------+
+            |
+            v
++-------------------------+
+| Draw Bounding Box       |
+| (with vehicle type)     |
++-------------------------+
+            |
+            v
++-------------------------+
+| Show Output Frame       |
++-------------------------+
+            |
+            v
++-------------------------+
+| Save Processed Video    |
+| (to output_video.mp4)   |
++-------------------------+
+            |
+            v
++-------------------------+
+| End                     |
++-------------------------+
